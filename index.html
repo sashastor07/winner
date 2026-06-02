@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winner — Фітнес-клуб Буча</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="./index.html" class="header__logo">
+        <img data-img="./logowin" alt="Winner">
+      </a>
+
+      <div class="burger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="header__nav">
+        <a href="./about.html">ПРО КЛУБ</a>
+        <a href="./schedule.html">РОЗКЛАД</a>
+        <a href="./pricing.html">ТАРИФИ</a>
+        <a href="./pricing.html" class="btn btn--red header__nav-cta">СТАТИ РЕЗИДЕНТОМ</a>
+      </nav>
+
+      <div class="header__cta">
+        <a href="./pricing.html" class="btn btn--red">СТАТИ РЕЗИДЕНТОМ</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- MAIN SLIDER -->
+    <section class="hero-slider">
+      <div class="hero-slider__track">
+        <div class="hero-slider__slide hero-slider__slide--1 active" data-bg="./slidermain/slider1">
+          <div class="hero-slider__overlay">
+            <h1 class="hero-slider__title">Твій шлях до перемоги починається тут</h1>
+            <p class="hero-slider__subtitle">Фітнес-клуб Winner у Бучі — простір сили, енергії та досягнень</p>
+            <a href="#subscriptions" class="btn btn--red">ОБРАТИ АБОНЕМЕНТ</a>
+          </div>
+        </div>
+        <div class="hero-slider__slide hero-slider__slide--2" data-bg="./slidermain/slider2">
+          <div class="hero-slider__overlay">
+            <h1 class="hero-slider__title">Сучасне обладнання та професійні тренери</h1>
+            <p class="hero-slider__subtitle">Групові заняття, персональні тренування та зони для будь-якого рівня підготовки</p>
+            <a href="#services" class="btn btn--red">ДІЗНАТИСЬ БІЛЬШЕ</a>
+          </div>
+        </div>
+        <div class="hero-slider__slide hero-slider__slide--3" data-bg="./slidermain/slider3">
+          <div class="hero-slider__overlay">
+            <h1 class="hero-slider__title">Приєднуйся до спільноти переможців</h1>
+            <p class="hero-slider__subtitle">Стань резидентом Winner і отримай доступ до ексклюзивних програм та знижок</p>
+            <a href="#resident" class="btn btn--red">СТАТИ РЕЗИДЕНТОМ</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slider__dots"></div>
+    </section>
+
+    <!-- SUBSCRIPTIONS -->
+    <section class="section subscriptions" id="subscriptions">
+      <div class="container">
+        <div class="subscriptions__inner">
+          <div class="subscriptions__image">
+            <img data-img="./abon" alt="Абонементи Winner">
+          </div>
+          <div class="subscriptions__content">
+            <h2>Абонементи на будь-який смак</h2>
+            <p>
+              Обери тариф, який підходить саме тобі — від базового доступу до повного
+              резидентського пакету з персональними тренуваннями, груповими заняттями
+              та безлімітним відвідуванням усіх зон клубу.
+            </p>
+            <a href="#subscriptions" class="btn btn--red">ОБРАТИ ТАРИФ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POPULAR SERVICES -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="services__header">
+          <h2 class="section__title">Популярні послуги</h2>
+          <div class="services__controls">
+            <button class="services__arrow services__arrow--prev" aria-label="Попередній слайд">&#8592;</button>
+            <button class="services__arrow services__arrow--next" aria-label="Наступний слайд">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="services__slider">
+          <div class="services__track">
+
+            <!-- Slide 1 -->
+            <div class="services__slide">
+              <div class="services__grid">
+                <div class="services__card services__card--large services__card--bas" data-bg="./posl/bas_posl">
+                  <div class="services__card-label">
+                    <h3>Басейн</h3>
+                    <p>25-метровий басейн з підігрівом води та зоною для аквааеробіки</p>
+                  </div>
+                </div>
+                <div class="services__card services__card--kids" data-bg="./posl/kids_posl">
+                  <div class="services__card-label">
+                    <h3>Дитячі програми</h3>
+                    <p>Заняття для дітей від 3 років у безпечному та fun-середовищі</p>
+                  </div>
+                </div>
+                <div class="services__card services__card--cycle" data-bg="./posl/cycle_posl">
+                  <div class="services__card-label">
+                    <h3>Cycle</h3>
+                    <p>Інтенсивні велотренування під ритм музики з професійними інструкторами</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="services__slide">
+              <div class="services__grid">
+                <div class="services__card services__card--large services__card--lazn" data-bg="./posl/lazn_posl2">
+                  <div class="services__card-label">
+                    <h3>Лазня та сауна</h3>
+                    <p>Фінська сауна, хамам та зона відпочинку для відновлення після тренувань</p>
+                  </div>
+                </div>
+                <div class="services__card services__card--kidsbas" data-bg="./posl/kidsbas_posl2">
+                  <div class="services__card-label">
+                    <h3>Дитячий басейн</h3>
+                    <p>Окрема зона з мілководним басейном та заняттями для наймолодших</p>
+                  </div>
+                </div>
+                <div class="services__card services__card--streetfit" data-bg="./posl/streetfit_posl2">
+                  <div class="services__card-label">
+                    <h3>Street Fit</h3>
+                    <p>Функціональні тренування на вулиці — сила, витривалість та рух</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacts">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__block">
+          <h4 class="footer__title">Навігація</h4>
+          <nav class="footer__nav">
+            <a href="#about">Про клуб</a>
+            <a href="#subscriptions">Абонементи</a>
+            <a href="#services">Послуги</a>
+            <a href="#resident">Стати резидентом</a>
+          </nav>
+        </div>
+
+        <div class="footer__block">
+          <h4 class="footer__title">Контакти</h4>
+          <div class="footer__contacts">
+            <a href="tel:+380441234567">+38 (044) 123-45-67</a>
+            <a href="mailto:info@winner-bucha.ua">info@winner-bucha.ua</a>
+            <span>м. Буча, вул. Прикладна, 1</span>
+          </div>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">Ig</a>
+            <a href="#" aria-label="Facebook">Fb</a>
+            <a href="#" aria-label="Telegram">Tg</a>
+          </div>
+        </div>
+
+        <div class="footer__block">
+          <h4 class="footer__title">Графік роботи</h4>
+          <div class="footer__contacts">
+            <span>Пн–Пт: 07:00 – 22:00</span>
+            <span>Сб–Нд: 08:00 – 20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__copyright">
+        &copy; 2026 Winner Fitness Club, Буча. Усі права захищено.
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
