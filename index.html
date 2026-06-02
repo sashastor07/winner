@@ -4,15 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Winner — Фітнес-клуб Буча</title>
-  <link rel="stylesheet" href="./style.css">
+  <script>
+    (function () {
+      var p = location.pathname;
+      if (/\.html?$/i.test(p)) p = p.substring(0, p.lastIndexOf('/') + 1);
+      else if (p.charAt(p.length - 1) !== '/') p += '/';
+      var base = document.createElement('base');
+      base.href = p;
+      document.head.appendChild(base);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="header">
     <div class="header__inner">
-      <a href="./index.html" class="header__logo">
-        <img data-img="./logowin" alt="Winner">
+      <a href="index.html" class="header__logo">
+        <img data-img="logowin" alt="Winner">
       </a>
 
       <div class="burger-menu">
@@ -22,14 +32,14 @@
       </div>
 
       <nav class="header__nav">
-        <a href="./about.html">ПРО КЛУБ</a>
-        <a href="./schedule.html">РОЗКЛАД</a>
-        <a href="./pricing.html">ТАРИФИ</a>
-        <a href="./pricing.html" class="btn btn--red header__nav-cta">СТАТИ РЕЗИДЕНТОМ</a>
+        <a href="about.html">ПРО КЛУБ</a>
+        <a href="schedule.html">РОЗКЛАД</a>
+        <a href="pricing.html">ТАРИФИ</a>
+        <a href="pricing.html" class="btn btn--red header__nav-cta">СТАТИ РЕЗИДЕНТОМ</a>
       </nav>
 
       <div class="header__cta">
-        <a href="./pricing.html" class="btn btn--red">СТАТИ РЕЗИДЕНТОМ</a>
+        <a href="pricing.html" class="btn btn--red">СТАТИ РЕЗИДЕНТОМ</a>
       </div>
     </div>
   </header>
@@ -39,21 +49,21 @@
     <!-- MAIN SLIDER -->
     <section class="hero-slider">
       <div class="hero-slider__track">
-        <div class="hero-slider__slide hero-slider__slide--1 active" data-bg="./slidermain/slider1">
+        <div class="hero-slider__slide hero-slider__slide--1 active" data-bg="slidermain/slider1">
           <div class="hero-slider__overlay">
             <h1 class="hero-slider__title">Твій шлях до перемоги починається тут</h1>
             <p class="hero-slider__subtitle">Фітнес-клуб Winner у Бучі — простір сили, енергії та досягнень</p>
             <a href="#subscriptions" class="btn btn--red">ОБРАТИ АБОНЕМЕНТ</a>
           </div>
         </div>
-        <div class="hero-slider__slide hero-slider__slide--2" data-bg="./slidermain/slider2">
+        <div class="hero-slider__slide hero-slider__slide--2" data-bg="slidermain/slider2">
           <div class="hero-slider__overlay">
             <h1 class="hero-slider__title">Сучасне обладнання та професійні тренери</h1>
             <p class="hero-slider__subtitle">Групові заняття, персональні тренування та зони для будь-якого рівня підготовки</p>
             <a href="#services" class="btn btn--red">ДІЗНАТИСЬ БІЛЬШЕ</a>
           </div>
         </div>
-        <div class="hero-slider__slide hero-slider__slide--3" data-bg="./slidermain/slider3">
+        <div class="hero-slider__slide hero-slider__slide--3" data-bg="slidermain/slider3">
           <div class="hero-slider__overlay">
             <h1 class="hero-slider__title">Приєднуйся до спільноти переможців</h1>
             <p class="hero-slider__subtitle">Стань резидентом Winner і отримай доступ до ексклюзивних програм та знижок</p>
@@ -69,7 +79,7 @@
       <div class="container">
         <div class="subscriptions__inner">
           <div class="subscriptions__image">
-            <img data-img="./abon" alt="Абонементи Winner">
+            <img data-img="abon" alt="Абонементи Winner">
           </div>
           <div class="subscriptions__content">
             <h2>Абонементи на будь-який смак</h2>
@@ -101,19 +111,19 @@
             <!-- Slide 1 -->
             <div class="services__slide">
               <div class="services__grid">
-                <div class="services__card services__card--large services__card--bas" data-bg="./posl/bas_posl">
+                <div class="services__card services__card--large services__card--bas" data-bg="posl/bas_posl">
                   <div class="services__card-label">
                     <h3>Басейн</h3>
                     <p>25-метровий басейн з підігрівом води та зоною для аквааеробіки</p>
                   </div>
                 </div>
-                <div class="services__card services__card--kids" data-bg="./posl/kids_posl">
+                <div class="services__card services__card--kids" data-bg="posl/kids_posl">
                   <div class="services__card-label">
                     <h3>Дитячі програми</h3>
                     <p>Заняття для дітей від 3 років у безпечному та fun-середовищі</p>
                   </div>
                 </div>
-                <div class="services__card services__card--cycle" data-bg="./posl/cycle_posl">
+                <div class="services__card services__card--cycle" data-bg="posl/cycle_posl">
                   <div class="services__card-label">
                     <h3>Cycle</h3>
                     <p>Інтенсивні велотренування під ритм музики з професійними інструкторами</p>
@@ -125,19 +135,19 @@
             <!-- Slide 2 -->
             <div class="services__slide">
               <div class="services__grid">
-                <div class="services__card services__card--large services__card--lazn" data-bg="./posl/lazn_posl2">
+                <div class="services__card services__card--large services__card--lazn" data-bg="posl/lazn_posl2">
                   <div class="services__card-label">
                     <h3>Лазня та сауна</h3>
                     <p>Фінська сауна, хамам та зона відпочинку для відновлення після тренувань</p>
                   </div>
                 </div>
-                <div class="services__card services__card--kidsbas" data-bg="./posl/kidsbas_posl2">
+                <div class="services__card services__card--kidsbas" data-bg="posl/kidsbas_posl2">
                   <div class="services__card-label">
                     <h3>Дитячий басейн</h3>
                     <p>Окрема зона з мілководним басейном та заняттями для наймолодших</p>
                   </div>
                 </div>
-                <div class="services__card services__card--streetfit" data-bg="./posl/streetfit_posl2">
+                <div class="services__card services__card--streetfit" data-bg="posl/streetfit_posl2">
                   <div class="services__card-label">
                     <h3>Street Fit</h3>
                     <p>Функціональні тренування на вулиці — сила, витривалість та рух</p>
@@ -196,6 +206,6 @@
     </div>
   </footer>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

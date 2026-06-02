@@ -4,15 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Про клуб — Winner, Буча</title>
-  <link rel="stylesheet" href="./style.css">
+  <script>
+    (function () {
+      var p = location.pathname;
+      if (/\.html?$/i.test(p)) p = p.substring(0, p.lastIndexOf('/') + 1);
+      else if (p.charAt(p.length - 1) !== '/') p += '/';
+      var base = document.createElement('base');
+      base.href = p;
+      document.head.appendChild(base);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- HEADER -->
   <header class="header">
     <div class="header__inner">
-      <a href="./index.html" class="header__logo">
-        <img data-img="./logowin" alt="Winner">
+      <a href="index.html" class="header__logo">
+        <img data-img="logowin" alt="Winner">
       </a>
 
       <div class="burger-menu">
@@ -22,14 +32,14 @@
       </div>
 
       <nav class="header__nav">
-        <a href="./about.html">ПРО КЛУБ</a>
-        <a href="./schedule.html">РОЗКЛАД</a>
-        <a href="./pricing.html">ТАРИФИ</a>
-        <a href="./pricing.html" class="btn btn--red header__nav-cta">СТАТИ РЕЗИДЕНТОМ</a>
+        <a href="about.html">ПРО КЛУБ</a>
+        <a href="schedule.html">РОЗКЛАД</a>
+        <a href="pricing.html">ТАРИФИ</a>
+        <a href="pricing.html" class="btn btn--red header__nav-cta">СТАТИ РЕЗИДЕНТОМ</a>
       </nav>
 
       <div class="header__cta">
-        <a href="./pricing.html" class="btn btn--red">СТАТИ РЕЗИДЕНТОМ</a>
+        <a href="pricing.html" class="btn btn--red">СТАТИ РЕЗИДЕНТОМ</a>
       </div>
     </div>
   </header>
@@ -37,7 +47,7 @@
   <main>
 
     <!-- ABOUT HERO -->
-    <section class="about-hero" data-bg="./aboutbucha/mainbucha">
+    <section class="about-hero" data-bg="aboutbucha/mainbucha">
       <div class="about-hero__overlay">
         <h1 class="about-hero__title">БІЛЬШЕ НІЖ ПРОСТО ФІТНЕС</h1>
         <p class="about-hero__subtitle">Відкрий для себе простір, де народжуються чемпіони.</p>
@@ -60,7 +70,7 @@
           </p>
         </div>
         <div class="zone-row__image">
-          <img data-img="./aboutbucha/trenzone" alt="Тренажерна зона Winner">
+          <img data-img="aboutbucha/trenzone" alt="Тренажерна зона Winner">
         </div>
       </div>
 
@@ -75,7 +85,7 @@
           </p>
         </div>
         <div class="zone-row__image">
-          <img data-img="./aboutbucha/groupzone" alt="Групові заняття Winner">
+          <img data-img="aboutbucha/groupzone" alt="Групові заняття Winner">
         </div>
       </div>
 
@@ -90,7 +100,7 @@
           </p>
         </div>
         <div class="zone-row__image">
-          <img data-img="./aboutbucha/cyclezone" alt="Cycle Studio Winner">
+          <img data-img="aboutbucha/cyclezone" alt="Cycle Studio Winner">
         </div>
       </div>
 
@@ -105,7 +115,7 @@
           </p>
         </div>
         <div class="zone-row__image">
-          <img data-img="./posl/bas_posl" alt="Басейн Winner">
+          <img data-img="posl/bas_posl" alt="Басейн Winner">
         </div>
       </div>
 
@@ -120,7 +130,7 @@
           </p>
         </div>
         <div class="zone-row__image">
-          <img data-img="./posl/lazn_posl2" alt="SPA та Wellness Winner">
+          <img data-img="posl/lazn_posl2" alt="SPA та Wellness Winner">
         </div>
       </div>
 
@@ -172,6 +182,6 @@
     </div>
   </footer>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

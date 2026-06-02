@@ -28,12 +28,26 @@ function initBurgerMenu() {
 /* ===== IMAGE FALLBACK (PNG / JPG / JPEG) ===== */
 const IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg'];
 
+function getSiteBase() {
+  const path = window.location.pathname;
+  if (/\.html?$/i.test(path)) {
+    return path.slice(0, path.lastIndexOf('/') + 1);
+  }
+  if (path.endsWith('/')) return path;
+  return `${path}/`;
+}
+
+function normalizeAssetPath(path) {
+  return path.replace(/^(\.\/|\/)+/, '');
+}
+
 function stripImageExtension(path) {
   return path.replace(/\.(png|jpe?g)$/i, '');
 }
 
 function resolveImageUrl(basePath) {
-  const base = stripImageExtension(basePath);
+  const base = stripImageExtension(normalizeAssetPath(basePath));
+  const siteBase = getSiteBase();
 
   return new Promise((resolve) => {
     let index = 0;
@@ -45,7 +59,7 @@ function resolveImageUrl(basePath) {
         return;
       }
 
-      const url = `${base}.${IMAGE_EXTENSIONS[index++]}`;
+      const url = `${siteBase}${base}.${IMAGE_EXTENSIONS[index++]}`;
       probe.onload = () => resolve(url);
       probe.onerror = tryNext;
       probe.src = url;
