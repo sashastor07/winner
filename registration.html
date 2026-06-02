@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Розклад тренувань — Winner, Буча</title>
+  <title>Анкета резидента — Winner, Буча</title>
   <script>
     (function () {
       var p = location.pathname;
@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="page-schedule">
+<body class="page-registration">
 
   <!-- HEADER -->
   <header class="header">
@@ -45,51 +45,48 @@
     </div>
   </header>
 
-  <main class="schedule-main">
-
-    <section class="schedule-hero">
-      <div class="schedule-container">
-        <p class="schedule-hero__label">Програма Winner</p>
-        <h1 class="schedule-hero__title">Інтерактивний розклад</h1>
-        <p class="schedule-hero__text">
-          Оберіть дату в календарній стрічці, щоб побачити актуальні заняття дня.
-          Базовий розклад згенерований на 3 місяці вперед.
-        </p>
-      </div>
-    </section>
-
-    <section class="daily-schedule" aria-labelledby="daily-schedule-title">
-      <div class="schedule-container">
-        <div class="schedule-calendar">
-          <div class="schedule-calendar__header">
-            <div>
-              <p class="schedule-hero__label">Календар</p>
-              <h2 id="daily-schedule-title" class="schedule-section__title">Розклад на день</h2>
-            </div>
-            <p class="schedule-calendar__hint">Гортайте дати горизонтально</p>
-          </div>
-
-          <div class="schedule-date-strip" id="scheduleDateStrip" aria-label="Оберіть дату"></div>
+  <main class="registration-main">
+    <section class="registration-section">
+      <div class="registration-container">
+        <div class="registration-intro">
+          <p class="registration-intro__label">Winner Application</p>
+          <h1 class="registration-intro__title">Анкета резидента</h1>
+          <p class="registration-intro__text">
+            Залиште контакти, оберіть тариф, і менеджер Winner зв'яжеться з вами для підтвердження заявки.
+          </p>
         </div>
 
-        <div class="schedule-daily-header">
-          <span class="schedule-month__badge">Обраний день</span>
-          <h2 class="schedule-month__title" id="selectedDateLabel">Сьогодні</h2>
-        </div>
+        <form class="registration-form" id="registrationForm" action="https://formspree.io/f/maqzwnqk" method="POST">
+          <input type="hidden" name="_subject" value="Нова заявка з сайту Winner">
 
-        <div class="schedule-cards" id="dailyScheduleList"></div>
+          <label class="registration-field">
+            <span>Ім'я</span>
+            <input type="text" name="name" placeholder="Ваше ім'я" autocomplete="name" required>
+          </label>
+
+          <label class="registration-field">
+            <span>Номер телефону</span>
+            <input type="tel" name="phone" placeholder="+38 (0__) ___-__-__" autocomplete="tel" required>
+          </label>
+
+          <label class="registration-field">
+            <span>Вибір тарифу</span>
+            <select name="plan" id="registrationPlan" required>
+              <option value="" disabled selected>Оберіть тариф</option>
+              <option value="premium">PREMIUM</option>
+              <option value="sport">SPORT</option>
+              <option value="sport-pool">SPORT + POOL</option>
+              <option value="lux-spa">LUX &amp; SPA</option>
+            </select>
+          </label>
+
+          <button type="submit" class="btn btn--red registration-form__submit">Надіслати заявку</button>
+          <p class="registration-form__note" id="registrationStatus">
+            Натискаючи кнопку, ви погоджуєтесь на зв'язок з менеджером клубу.
+          </p>
+        </form>
       </div>
     </section>
-
-    <section class="schedule-note">
-      <div class="schedule-container">
-        <p>
-          * Розклад можна адаптувати під групові заняття клубу. Для персональної програми —
-          <a href="registration.html" class="schedule-note__link">оберіть тариф</a>.
-        </p>
-      </div>
-    </section>
-
   </main>
 
   <!-- FOOTER -->

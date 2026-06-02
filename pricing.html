@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Розклад тренувань — Winner, Буча</title>
+  <title>Тарифи — Winner, Буча</title>
   <script>
     (function () {
       var p = location.pathname;
@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="page-schedule">
+<body class="page-pricing">
 
   <!-- HEADER -->
   <header class="header">
@@ -45,51 +45,68 @@
     </div>
   </header>
 
-  <main class="schedule-main">
-
-    <section class="schedule-hero">
-      <div class="schedule-container">
-        <p class="schedule-hero__label">Програма Winner</p>
-        <h1 class="schedule-hero__title">Інтерактивний розклад</h1>
-        <p class="schedule-hero__text">
-          Оберіть дату в календарній стрічці, щоб побачити актуальні заняття дня.
-          Базовий розклад згенерований на 3 місяці вперед.
+  <main class="pricing-main">
+    <section class="pricing-hero">
+      <div class="pricing-container">
+        <p class="pricing-hero__label">Winner Membership</p>
+        <h1 class="pricing-hero__title">Обери свій тариф</h1>
+        <p class="pricing-hero__text">
+          Чотири формати доступу до клубу: від базового спорту до преміального відновлення у SPA.
         </p>
       </div>
     </section>
 
-    <section class="daily-schedule" aria-labelledby="daily-schedule-title">
-      <div class="schedule-container">
-        <div class="schedule-calendar">
-          <div class="schedule-calendar__header">
-            <div>
-              <p class="schedule-hero__label">Календар</p>
-              <h2 id="daily-schedule-title" class="schedule-section__title">Розклад на день</h2>
+    <section class="pricing-section" aria-labelledby="pricing-title">
+      <div class="pricing-container">
+        <h2 id="pricing-title" class="pricing-section__title">Тарифи клубу</h2>
+
+        <div class="pricing-grid">
+          <article class="pricing-card pricing-card--sport">
+            <div class="pricing-card__content">
+              <h3 class="pricing-card__title">SPORT</h3>
+              <p class="pricing-card__price">1200 грн/міс</p>
+              <p class="pricing-card__description">
+                Оптимальний тариф для регулярних тренувань у тренажерній залі та функціональних зонах.
+              </p>
+              <a href="registration.html?plan=sport" class="pricing-card__button" data-plan="sport">Обрати тариф</a>
             </div>
-            <p class="schedule-calendar__hint">Гортайте дати горизонтально</p>
-          </div>
+          </article>
 
-          <div class="schedule-date-strip" id="scheduleDateStrip" aria-label="Оберіть дату"></div>
+          <article class="pricing-card pricing-card--pool">
+            <div class="pricing-card__content">
+              <h3 class="pricing-card__title">SPORT + POOL</h3>
+              <p class="pricing-card__price">2000 грн/міс</p>
+              <p class="pricing-card__description">
+                Тренажерна зала, групові заняття та басейн для комплексного тренування й відновлення.
+              </p>
+              <a href="registration.html?plan=sport-pool" class="pricing-card__button" data-plan="sport-pool">Обрати тариф</a>
+            </div>
+          </article>
+
+          <article class="pricing-card pricing-card--premium">
+            <div class="pricing-card__content">
+              <h3 class="pricing-card__title">PREMIUM</h3>
+              <p class="pricing-card__price">3000 грн/міс</p>
+              <p class="pricing-card__description">
+                Повний доступ до тренажерної зали, групових програм, басейну та персонального супроводу.
+              </p>
+              <a href="registration.html?plan=premium" class="pricing-card__button" data-plan="premium">Обрати тариф</a>
+            </div>
+          </article>
+
+          <article class="pricing-card pricing-card--lux">
+            <div class="pricing-card__content">
+              <h3 class="pricing-card__title">LUX &amp; SPA</h3>
+              <p class="pricing-card__price">5000 грн/міс</p>
+              <p class="pricing-card__description">
+                Максимальний комфорт: спорт, басейн, SPA-зона, сауна та wellness-відновлення.
+              </p>
+              <a href="registration.html?plan=lux-spa" class="pricing-card__button" data-plan="lux-spa">Обрати тариф</a>
+            </div>
+          </article>
         </div>
-
-        <div class="schedule-daily-header">
-          <span class="schedule-month__badge">Обраний день</span>
-          <h2 class="schedule-month__title" id="selectedDateLabel">Сьогодні</h2>
-        </div>
-
-        <div class="schedule-cards" id="dailyScheduleList"></div>
       </div>
     </section>
-
-    <section class="schedule-note">
-      <div class="schedule-container">
-        <p>
-          * Розклад можна адаптувати під групові заняття клубу. Для персональної програми —
-          <a href="registration.html" class="schedule-note__link">оберіть тариф</a>.
-        </p>
-      </div>
-    </section>
-
   </main>
 
   <!-- FOOTER -->

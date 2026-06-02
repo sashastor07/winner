@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   initImageFallback();
   initBurgerMenu();
+  initPricingPlanLinks();
   initSchedulePage();
+  initRegistrationForm();
   initHeroSlider();
   initServicesSlider();
 });
@@ -23,6 +25,60 @@ function initBurgerMenu() {
       burger.classList.remove('toggle');
       nav.classList.remove('nav-active');
     });
+  });
+}
+
+/* ===== REGISTRATION FORM ===== */
+function initPricingPlanLinks() {
+  document.querySelectorAll('[data-plan]').forEach((link) => {
+    link.addEventListener('click', () => {
+      sessionStorage.setItem('selectedPlan', link.dataset.plan);
+    });
+  });
+}
+
+function initRegistrationForm() {
+  const form = document.getElementById('registrationForm');
+  const planSelect = document.getElementById('registrationPlan');
+  const status = document.getElementById('registrationStatus');
+
+  if (!form || !planSelect) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan') || sessionStorage.getItem('selectedPlan');
+  const availablePlans = [...planSelect.options].map((option) => option.value);
+
+  if (plan && availablePlans.includes(plan)) {
+    planSelect.value = plan;
+    sessionStorage.setItem('selectedPlan', plan);
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        const selectedPlan = planSelect.value;
+        alert('Дякуємо! Ваша заявка отримана.');
+        form.reset();
+        planSelect.value = selectedPlan;
+
+        if (status) {
+          status.textContent = 'Дякуємо! Ваша заявка отримана.';
+          status.classList.add('registration-form__note--success');
+        }
+      } else {
+        alert('Виникла помилка, спробуйте ще раз.');
+      }
+    } catch (error) {
+      alert('Виникла помилка, спробуйте ще раз.');
+    }
   });
 }
 
