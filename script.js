@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initImageFallback();
   initBurgerMenu();
+  initSchedulePage();
   initHeroSlider();
   initServicesSlider();
 });
@@ -81,6 +82,164 @@ async function initImageFallback() {
   });
 
   await Promise.all([...imgTasks, ...bgTasks]);
+}
+
+/* ===== INTERACTIVE SCHEDULE PAGE ===== */
+const baseWeeklySchedule = {
+  0: [
+    { time: '10:00', name: 'Recovery Stretch' },
+    { time: '12:00', name: 'Сімейне плавання' },
+  ],
+  1: [
+    { time: '08:00', name: 'Full Body Strength' },
+    { time: '11:00', name: 'Тренування для клієнток' },
+    { time: '19:00', name: 'Functional Training' },
+  ],
+  2: [
+    { time: '09:00', name: 'Cycle Energy' },
+    { time: '12:00', name: 'Велотренажери' },
+    { time: '18:30', name: 'Yoga Balance' },
+  ],
+  3: [
+    { time: '08:30', name: 'Upper Body Power' },
+    { time: '17:30', name: 'Kids Fitness' },
+    { time: '20:00', name: 'HIIT Winner' },
+  ],
+  4: [
+    { time: '09:30', name: 'Lower Body Strength' },
+    { time: '13:00', name: 'Aqua Fitness' },
+    { time: '19:00', name: 'Pilates Core' },
+  ],
+  5: [
+    { time: '08:00', name: 'Performance Circuit' },
+    { time: '18:00', name: 'Street Fit' },
+    { time: '20:00', name: 'Cycle Race' },
+  ],
+  6: [
+    { time: '10:00', name: 'Team Challenge' },
+    { time: '12:00', name: 'Басейн: техніка плавання' },
+    { time: '16:00', name: 'Mobility & SPA Recovery' },
+  ],
+};
+
+function getLocalDateKey(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function addDays(date, days) {
+  const next = new Date(date);
+  next.setDate(next.getDate() + days);
+  return next;
+}
+
+function buildScheduleData(startDate, totalDays = 92) {
+  const data = {};
+  const oneOffEvents = {
+    [getLocalDateKey(addDays(startDate, 3))]: [
+      { time: '18:00', name: 'Гостьовий майстер-клас: техніка присідання' },
+    ],
+    [getLocalDateKey(addDays(startDate, 14))]: [
+      { time: '11:30', name: 'Функціональний тест Winner' },
+    ],
+    [getLocalDateKey(addDays(startDate, 30))]: [
+      { time: '19:30', name: 'Cycle Night Ride' },
+    ],
+  };
+
+  for (let i = 0; i < totalDays; i += 1) {
+    const date = addDays(startDate, i);
+    const key = getLocalDateKey(date);
+    const weeklyEvents = baseWeeklySchedule[date.getDay()] || [];
+    data[key] = [...weeklyEvents, ...(oneOffEvents[key] || [])].sort((a, b) =>
+      a.time.localeCompare(b.time)
+    );
+  }
+
+  return data;
+}
+
+function formatDateLabel(date) {
+  return new Intl.DateTimeFormat('uk-UA', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  }).format(date);
+}
+
+function initSchedulePage() {
+  const dateStrip = document.getElementById('scheduleDateStrip');
+  const scheduleList = document.getElementById('dailyScheduleList');
+  const selectedDateLabel = document.getElementById('selectedDateLabel');
+
+  if (!dateStrip || !scheduleList || !selectedDateLabel) return;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const scheduleData = buildScheduleData(today);
+  const dates = Object.keys(scheduleData);
+  let activeDateKey = getLocalDateKey(today);
+
+  window.scheduleData = scheduleData;
+
+  function renderDateButtons() {
+    dateStrip.innerHTML = dates
+      .map((dateKey) => {
+        const date = new Date(`${dateKey}T00:00:00`);
+        const weekday = new Intl.DateTimeFormat('uk-UA', { weekday: 'short' }).format(date);
+        const day = new Intl.DateTimeFormat('uk-UA', { day: '2-digit', month: '2-digit' }).format(date);
+        const activeClass = dateKey === activeDateKey ? ' schedule-date-btn--active' : '';
+
+        return `
+          <button class="schedule-date-btn${activeClass}" type="button" data-date="${dateKey}">
+            <span class="schedule-date-btn__weekday">${weekday}</span>
+            <span class="schedule-date-btn__date">${day}</span>
+          </button>
+        `;
+      })
+      .join('');
+
+    dateStrip.querySelectorAll('.schedule-date-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        activeDateKey = button.dataset.date;
+        renderDateButtons();
+        renderDailySchedule();
+      });
+    });
+  }
+
+  function renderDailySchedule() {
+    const date = new Date(`${activeDateKey}T00:00:00`);
+    const events = scheduleData[activeDateKey] || [];
+
+    selectedDateLabel.textContent = formatDateLabel(date);
+
+    if (events.length === 0) {
+      scheduleList.innerHTML = `
+        <div class="schedule-empty">
+          На цей день занять немає. Оберіть іншу дату в календарі.
+        </div>
+      `;
+      return;
+    }
+
+    scheduleList.innerHTML = events
+      .map(
+        (event) => `
+          <div class="schedule-card">
+            <span class="schedule-card__meta">${event.time}</span>
+            <h3 class="schedule-card__title">${event.name}</h3>
+          </div>
+        `
+      )
+      .join('');
+  }
+
+  renderDateButtons();
+  renderDailySchedule();
 }
 /* ===== MAIN HERO SLIDER ===== */
 function initHeroSlider() {
